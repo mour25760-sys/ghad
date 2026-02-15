@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ghadeer | Cybersecurity Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+html{ scroll-behavior:smooth; }
+
+body{
+    background:linear-gradient(135deg,#1f1f1f,#2c3e50);
+    color:#eee;
+    transition:0.5s ease;
+}
+
+/* ===== NAVBAR ===== */
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    backdrop-filter:blur(12px);
+    background:rgba(0,0,0,0.5);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 60px;
+    z-index:1000;
+}
+
+nav h3{
+    color:#00d4ff;
+    font-weight:600;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+}
+
+nav ul li{
+    margin:0 15px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:#ccc;
+    position:relative;
+    transition:0.3s;
+}
+
+nav ul li a::after{
+    content:"";
+    position:absolute;
+    width:0%;
+    height:2px;
+    left:0;
+    bottom:-5px;
+    background:#00d4ff;
+    transition:0.3s;
+}
+
+nav ul li a:hover::after{
+    width:100%;
+}
+
+/* ===== Buttons ===== */
+.controls button{
+    margin-left:10px;
+    padding:6px 15px;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.lang-btn{
+    background:#00d4ff;
+    color:#111;
+}
+
+.theme-btn{
+    background:#444;
+    color:#fff;
+}
+
+/* ===== SECTIONS ===== */
+section{
+    min-height:100vh;
+    padding:120px 20px 60px 20px;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+h1{
+    font-size:55px;
+    color:#00d4ff;
+    margin-bottom:15px;
+    animation:fadeDown 1.2s ease;
+}
+
+h2{
+    color:#00d4ff;
+    margin-bottom:20px;
+}
+
+.card{
+    background:rgba(255,255,255,0.06);
+    padding:35px;
+    border-radius:20px;
+    backdrop-filter:blur(15px);
+    box-shadow:0 15px 35px rgba(0,212,255,0.15);
+    max-width:750px;
+    margin:20px;
+    opacity:0;
+    transform:translateY(40px);
+    transition:0.8s ease;
+}
+
+.card.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ===== Light Mode ===== */
+body.light{
+    background:linear-gradient(135deg,#e8f5e9,#d0f0f8);
+    color:#c2185b; /* وردي */
+}
+
+body.light nav{
+    background:rgba(255,255,255,0.7);
+}
+
+body.light nav h3{
+    color:#c2185b;
+}
+
+body.light nav ul li a{
+    color:#c2185b;
+}
+
+body.light nav ul li a:hover::after{
+    background:#00acc1;
+}
+
+body.light .card{
+    background:rgba(255,255,255,0.9);
+    box-shadow:0 15px 35px rgba(0,180,200,0.15);
+}
+
+body.light button.theme-btn{
+    background:linear-gradient(45deg,#f48fb1,#4dd0e1);
+    color:#fff;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeDown{
+    from{opacity:0; transform:translateY(-40px);}
+    to{opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h3 id="Title">Ghadeer</h3>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="controls">
+        <button class="lang-btn" onclick="toggleLanguage()">AR</button>
+        <button class="theme-btn" onclick="toggleTheme()">☀</button>
+    </div>
+</nav>
+
+<section id="home">
+    <h1 id="homeTitle">Cybersecurity Student</h1>
+    <h2 id="homeTitle2">Ghadeer Ahmed AL_Asri</h2>
+    <p id="homeSubtitle">Aspiring Security Analyst</p>
+</section>
+
+<section id="about">
+    <h2 id="aboutTitle">About Me</h2>
+    <div class="card" id="aboutCard">
+        Passionate cybersecurity student focused on network security,
+        system protection, and ethical testing through hands-on labs.
+    </div>
+</section>
+
+<section id="skills">
+    <h2 id="skillsTitle">Technical Skills</h2>
+    <div class="card" id="skillsCard">
+        TCP/IP – DNS – DHCP <br>
+        Linux & Windows <br>
+        Virtual Labs <br>
+        Firewall Fundamentals <br>
+        Reverse Engineering (Educational) <br>
+        Penetration Testing Basics
+    </div>
+</section>
+
+<section id="projects">
+    <h2 id="projectsTitle">Projects</h2>
+    <div class="card" id="projectsCard">
+        Home Lab Simulation <br>
+        Cybersecurity Notes <br>
+        Networking Practice Setup
+    </div>
+</section>
+
+<section id="contact">
+    <h2 id="contactTitle">Contact</h2>
+    <div class="card" id="contactCard">
+        Email: your.email@example.com
+    </div>
+</section>
+
+<script>
+/* ===== Scroll Reveal ===== */
+const cards = document.querySelectorAll('.card');
+window.addEventListener('scroll', ()=>{
+    cards.forEach(card=>{
+        const position = card.getBoundingClientRect().top;
+        if(position < window.innerHeight - 100){
+            card.classList.add('show');
+        }
+    });
+});
+
+/* ===== Theme Toggle ===== */
+function toggleTheme(){
+    document.body.classList.toggle("light");
+}
+
+/* ===== Language Toggle كامل ===== */
+let isArabic=false;
+
+const translations = {
+  "Title": "غدير", 
+  "homeTitle": "طالبة أمن سيبراني",
+  "homeTitle2": "غدير أحمد العصري",
+  "homeSubtitle": "محللة أمن معلومات مستقبلية",
+  "aboutTitle": "من أنا",
+  "aboutCard": "طالبة شغوفة بالأمن السيبراني أركز على حماية الشبكات والأنظمة من خلال التجارب العملية.",
+  "skillsTitle": "المهارات التقنية",
+  "skillsCard": "TCP/IP – DNS – DHCP\nLinux & Windows\nVirtual Labs\nFirewall Fundamentals\nReverse Engineering (Educational)\nPenetration Testing Basics",
+  "projectsTitle": "المشاريع",
+  "projectsCard": "Home Lab Simulation\nCybersecurity Notes\nNetworking Practice Setup",
+  "contactTitle": "التواصل",
+  "contactCard": "Email: your.email@example.com"
+};
+
+function toggleLanguage(){
+    if(!isArabic){
+        for(let id in translations){
+            document.getElementById(id).innerText = translations[id];
+        }
+        document.body.style.direction="rtl";
+        document.querySelector(".lang-btn").innerText="EN";
+        isArabic=true;
+    } else {
+        location.reload();
+    }
+}
+</script>
+
+</body>
+</html>
